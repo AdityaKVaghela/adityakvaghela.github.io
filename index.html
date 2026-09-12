@@ -102,6 +102,31 @@ h1,h2,h3,h4{font-family:"Syne","Manrope",sans-serif;margin:0;text-wrap:balance;l
 .contact-row .mail{font-family:"JetBrains Mono",monospace;font-size:13.5px;color:var(--text);font-weight:500}
 .contact-row .sep{color:var(--line);user-select:none}
 
+/* ---------- scroll cue ---------- */
+.cue{
+  position:fixed;left:50%;bottom:24px;z-index:70;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  text-decoration:none;transform:translateX(-50%);
+  transition:opacity .45s var(--ease),transform .45s var(--ease);
+}
+.cue .txt{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--text-3);transition:color .3s var(--ease);
+}
+.cue .rail{
+  position:relative;width:1px;height:46px;overflow:hidden;
+  background:linear-gradient(180deg,var(--line) 0%,transparent 100%);
+}
+.cue .rail::after{
+  content:"";position:absolute;left:0;top:-16px;width:1px;height:16px;
+  background:linear-gradient(180deg,transparent,var(--brand));
+  animation:cuefall 1.9s cubic-bezier(.5,0,.5,1) infinite;
+}
+@keyframes cuefall{0%{top:-16px;opacity:0}18%{opacity:1}80%{opacity:1}100%{top:46px;opacity:0}}
+.cue:hover .txt{color:var(--text)}
+.cue.gone{opacity:0;transform:translateX(-50%) translateY(14px);pointer-events:none}
+@media (max-width:620px){.cue{bottom:16px}.cue .rail{height:34px}}
+
 /* ---------- aurora ---------- */
 .aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
 .aurora i{position:absolute;display:block;border-radius:50%;filter:blur(110px)}
@@ -342,6 +367,11 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
 
 <div id="bar"></div>
 
+<a class="cue" id="cue" href="#work" aria-label="Scroll to the work">
+  <span class="txt">Scroll</span>
+  <span class="rail" aria-hidden="true"></span>
+</a>
+
 <nav class="nav">
   <div class="nav-in">
     <a class="sig" href="#top">AV<i>.</i></a>
@@ -355,7 +385,6 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
     <div class="nav-contact">
       <a href="https://linkedin.com/in/adityakvaghela" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/AdityaKVaghela" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Upwork</a>
     </div>
     <a class="hire" href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Hire me on Upwork</a>
   </div>
@@ -377,7 +406,6 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
           <span class="sep">/</span>
           <a href="https://linkedin.com/in/adityakvaghela" target="_blank" rel="noopener">LinkedIn &nearr;</a>
           <a href="https://github.com/AdityaKVaghela" target="_blank" rel="noopener">GitHub &nearr;</a>
-          <a href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Upwork &nearr;</a>
           <a href="https://twitter.com/iadii13" target="_blank" rel="noopener">Twitter &nearr;</a>
         </div>
         <p class="lede rise d2">
@@ -798,6 +826,11 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
     }
     links.forEach(function(a, i){ a.classList.toggle('on', i === active); });
   }
+  var cue = document.getElementById('cue');
+  function onCue(){ if (cue) cue.classList.toggle('gone', window.scrollY > 130); }
+  window.addEventListener('scroll', onCue, {passive:true});
+  onCue();
+
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
   onScroll();
