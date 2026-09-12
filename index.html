@@ -1,0 +1,875 @@
+<title>Aditya Vaghela</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* ==========================================================
+   Single committed world: deep space. Every colour explicit.
+   ========================================================== */
+:root{
+  --void:#06070A;
+  --surface:#0C0E13;
+  --surface-2:#12151C;
+  --line:#1D212B;
+  --line-2:#161A22;
+  --text:#F5F7FA;
+  --text-2:#949EAF;
+  --text-3:#5E6878;
+  --brand:#6D8BFF;
+  --ok:#3BDB8A;
+  --maxw:1280px;
+  --ease:cubic-bezier(.22,.75,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--void);color:var(--text);
+  font-family:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit}
+img{display:block;max-width:100%}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4{font-family:"Syne","Manrope",sans-serif;margin:0;text-wrap:balance;line-height:1.02;letter-spacing:-.03em;font-weight:800}
+.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px;position:relative;z-index:1}
+
+/* ---------- scroll progress ---------- */
+#bar{
+  position:fixed;top:0;left:0;height:2px;width:0%;z-index:90;
+  background:linear-gradient(90deg,var(--brand),#B58BFF);
+  transition:width .12s linear;
+}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky;top:0;z-index:80;
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(6,7,10,.72);border-bottom:1px solid var(--line-2);
+}
+.nav-in{
+  max-width:var(--maxw);margin:0 auto;padding:13px 30px;
+  display:flex;align-items:center;gap:0;
+}
+.nav .sig{font-family:"Syne",sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;text-decoration:none;flex:none}
+.nav .sig i{font-style:normal;color:var(--brand)}
+
+/* section links sit in the middle, away from both edges */
+.nav-links{display:flex;gap:26px;margin:0 auto}
+.nav-links a{
+  text-decoration:none;font-size:13.5px;color:var(--text-3);position:relative;padding:3px 0;
+  transition:color .25s var(--ease);
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;bottom:-3px;height:1.5px;width:0;background:var(--brand);
+  transition:width .3s var(--ease);
+}
+.nav-links a:hover,.nav-links a.on{color:var(--text)}
+.nav-links a.on::after,.nav-links a:hover::after{width:100%}
+
+/* contact zone, separated by a hairline */
+.nav-contact{display:flex;align-items:center;gap:16px;flex:none}
+.nav-contact a{
+  text-decoration:none;font-size:13px;color:var(--text-3);white-space:nowrap;
+  transition:color .25s var(--ease);
+}
+.nav-contact a:hover{color:var(--text)}
+.nav-div{width:1px;height:16px;background:var(--line);flex:none;margin:0 20px 0 0}
+
+.nav .hire{
+  margin-left:18px;text-decoration:none;font-size:13px;font-weight:700;flex:none;
+  padding:9px 18px;border-radius:100px;background:var(--brand);color:#050710;
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+.nav .hire:hover{transform:translateY(-2px);box-shadow:0 8px 24px -6px rgba(109,139,255,.6)}
+
+/* ---------- hero contact row ---------- */
+.contact-row{display:flex;flex-wrap:wrap;align-items:center;gap:0 22px;margin-bottom:26px}
+.contact-row a{
+  display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  font-size:14px;color:var(--text-2);padding:5px 0;position:relative;
+  transition:color .22s var(--ease);
+}
+.contact-row a:hover{color:var(--text)}
+.contact-row a::after{
+  content:"";position:absolute;left:0;bottom:1px;height:1px;width:0;background:var(--brand);
+  transition:width .28s var(--ease);
+}
+.contact-row a:hover::after{width:100%}
+.contact-row .mail{font-family:"JetBrains Mono",monospace;font-size:13.5px;color:var(--text);font-weight:500}
+.contact-row .sep{color:var(--line);user-select:none}
+
+/* ---------- aurora ---------- */
+.aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.aurora i{position:absolute;display:block;border-radius:50%;filter:blur(110px)}
+.aurora .n1{width:680px;height:680px;top:-260px;left:-200px;background:#1E3EA8;opacity:.42;animation:drift1 26s ease-in-out infinite}
+.aurora .n2{width:560px;height:560px;top:20px;right:-220px;background:#5B2E9E;opacity:.34;animation:drift2 31s ease-in-out infinite}
+.aurora .n3{width:460px;height:460px;bottom:-220px;left:38%;background:#0E5C7A;opacity:.26;animation:drift3 37s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(70px,50px) scale(1.09)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-60px,70px) scale(1.12)}}
+@keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,-46px) scale(1.07)}}
+
+/* ---------- app shot ----------
+   Store creative already carries its own device chrome, so no fake frame here.
+   Two screens per app, identical treatment on every row. */
+.shot{
+  position:relative;flex:none;width:max-content;border-radius:22px;overflow:hidden;
+  box-shadow:0 2px 6px rgba(0,0,0,.5),0 48px 90px -34px rgba(0,0,0,1);
+}
+.shot::after{
+  content:"";position:absolute;inset:0;border-radius:22px;pointer-events:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.13);
+}
+.shot img{height:var(--dh,520px);width:auto;max-width:none;display:block;background:var(--surface-2)}
+.shot{contain:layout paint}
+
+/* tilt shell + idle float */
+.proto{perspective:1400px;display:flex;justify-content:center;will-change:transform}
+.proto .shot{
+  transform-style:preserve-3d;
+  transition:transform .5s var(--ease);
+  animation:float 7s ease-in-out infinite;
+}
+@keyframes float{0%,100%{translate:0 0}50%{translate:0 -14px}}
+.proto.tilting .shot{transition:transform .12s linear;animation-play-state:paused}
+
+/* every row pairs two screens: the product, and the mechanism behind it */
+.proto.pair{gap:20px;align-items:flex-start}
+.proto.pair .shot img{--dh:430px}
+.proto.pair .shot:nth-child(2){margin-top:62px}
+.proto.pair .shot:nth-child(2) .device,
+.proto.pair .shot:nth-child(2){animation-delay:-3.5s}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:84px 0 96px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:56px;align-items:center}
+.tagrow{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:28px}
+.pill{
+  display:inline-flex;align-items:center;gap:9px;padding:7px 15px 7px 12px;border-radius:100px;
+  border:1px solid var(--line);background:rgba(18,21,28,.7);font-size:12.5px;color:var(--text-2);
+}
+.beacon{width:7px;height:7px;border-radius:50%;background:var(--ok);flex:none;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(59,219,138,.55)}70%{box-shadow:0 0 0 8px rgba(59,219,138,0)}}
+
+h1.name{font-size:clamp(48px,9.4vw,124px);letter-spacing:-.05em;line-height:.96;margin-bottom:30px}
+h1.name .l2{display:block;color:transparent;-webkit-text-stroke:1.6px #8492AD}
+.lede{font-size:clamp(16.5px,1.6vw,20px);color:var(--text-2);max-width:54ch}
+.lede b{color:var(--text);font-weight:700}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+  padding:14px 24px;border-radius:100px;font-size:14px;font-weight:700;
+  border:1px solid var(--line);background:var(--surface-2);color:var(--text);
+  transition:transform .28s var(--ease),border-color .28s var(--ease),box-shadow .28s var(--ease);
+}
+.btn:hover{transform:translateY(-3px);border-color:var(--brand)}
+.btn.solid{background:var(--brand);border-color:var(--brand);color:#050710}
+.btn.solid:hover{box-shadow:0 14px 34px -10px rgba(109,139,255,.7)}
+.btn.upwork{border-color:#1F8A3B;color:#3ECF62}
+.btn.upwork:hover{border-color:#3ECF62;box-shadow:0 14px 34px -12px rgba(62,207,98,.5)}
+
+/* entrance (runs on load, not scroll-gated) */
+.rise{animation:rise .85s var(--ease) both}
+.rise.d1{animation-delay:.06s}
+.rise.d2{animation-delay:.14s}
+.rise.d3{animation-delay:.22s}
+.rise.d4{animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+/* ---------- stat band ---------- */
+.band{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-top:64px;
+  background:linear-gradient(180deg,rgba(18,21,28,.85),rgba(12,14,19,.35));
+}
+.band > div{padding:26px 28px;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.band > div:nth-child(3n){border-right:0}
+.band > div:nth-last-child(-n+3){border-bottom:0}
+.band .v{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.band .k{margin-top:10px;font-size:12.5px;color:var(--text-3);line-height:1.45}
+
+/* ---------- marquee ---------- */
+.marquee{margin:0;padding:22px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);overflow:hidden}
+.mtrack{display:flex;gap:40px;width:max-content;animation:slide 46s linear infinite}
+.mtrack span{
+  font-family:"Syne",sans-serif;font-weight:700;font-size:23px;letter-spacing:-.02em;
+  color:var(--text-3);white-space:nowrap;display:flex;align-items:center;gap:40px;
+  transition:color .3s var(--ease);
+}
+.mtrack span::after{content:"";width:5px;height:5px;border-radius:50%;background:var(--brand);flex:none}
+.marquee:hover .mtrack span{color:var(--text-2)}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ---------- sections ---------- */
+.sec{padding:110px 0;position:relative}
+.sec-head{display:flex;align-items:flex-end;gap:22px;margin-bottom:60px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(32px,5.4vw,62px)}
+.sec-head .tail{margin-left:auto;color:var(--text-3);font-size:13px}
+
+/* ---------- project rows ---------- */
+.row{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);
+  gap:64px;align-items:center;padding:66px 0;border-top:1px solid var(--line-2);
+}
+.row:first-of-type{border-top:0}
+.row.flip .col-copy{order:2}
+.row.flip .col-art{order:1}
+.row.solo{grid-template-columns:minmax(0,1fr)}
+
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:100px;
+  font-size:11.5px;font-weight:700;margin-bottom:20px;
+  color:var(--c);border:1px solid color-mix(in srgb,var(--c) 40%,transparent);
+  background:color-mix(in srgb,var(--c) 12%,transparent);
+}
+.row h3{font-size:clamp(30px,4.4vw,54px);margin-bottom:14px}
+.row .who{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--text-3);margin-bottom:22px}
+.row .pitch{color:var(--text-2);font-size:17px;max-width:56ch;margin-bottom:28px}
+.bullets{display:flex;flex-direction:column;gap:13px;max-width:58ch}
+.bullets li{position:relative;padding-left:24px;color:var(--text-2);font-size:15.5px;line-height:1.55}
+.bullets li::before{content:"";position:absolute;left:0;top:.62em;width:11px;height:2px;border-radius:2px;background:var(--c,var(--brand))}
+.bullets b{color:var(--text);font-weight:700}
+
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:26px}
+.chip{font-family:"JetBrains Mono",monospace;font-size:11px;padding:6px 11px;border:1px solid var(--line);border-radius:7px;color:var(--text-3);transition:border-color .25s var(--ease),color .25s var(--ease)}
+.row:hover .chip{border-color:color-mix(in srgb,var(--c) 34%,var(--line))}
+
+.store{
+  display:inline-flex;align-items:center;gap:9px;margin-top:28px;
+  padding:13px 22px;border-radius:100px;text-decoration:none;font-size:13.5px;font-weight:700;
+  background:var(--c);color:#06070A;
+  transition:transform .28s var(--ease),box-shadow .28s var(--ease);
+}
+.store:hover{transform:translateY(-3px);box-shadow:0 16px 36px -12px color-mix(in srgb,var(--c) 80%,transparent)}
+.store.muted{background:transparent;color:var(--text-3);border:1px dashed var(--line);font-weight:500;cursor:default}
+.store.muted:hover{transform:none;box-shadow:none}
+
+/* art column glow behind the device */
+.col-art{position:relative;display:flex;justify-content:center}
+.col-art::before{
+  content:"";position:absolute;width:74%;aspect-ratio:1;border-radius:50%;
+  background:var(--c);opacity:.2;filter:blur(90px);z-index:0;
+}
+.col-art .proto{position:relative;z-index:1}
+
+/* ---------- mini cards ---------- */
+.minis{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.mini{
+  position:relative;border:1px solid var(--line);border-radius:18px;padding:26px;
+  background:var(--surface);display:flex;flex-direction:column;gap:10px;overflow:hidden;
+  transition:transform .3s var(--ease),border-color .3s var(--ease);
+}
+.mini::before{
+  content:"";position:absolute;inset:0;opacity:0;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 0%,rgba(109,139,255,.16),transparent 62%);
+  transition:opacity .35s var(--ease);
+}
+.mini:hover{transform:translateY(-5px);border-color:#2C3342}
+.mini:hover::before{opacity:1}
+.mini > *{position:relative}
+.mini h4{font-size:20px;font-weight:700;letter-spacing:-.025em}
+.mini .where{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-3)}
+.mini p{font-size:14px;color:var(--text-2);line-height:1.55}
+.mini .go{margin-top:auto;padding-top:16px;font-family:"JetBrains Mono",monospace;font-size:11.5px;text-decoration:none;color:var(--brand)}
+.mini .go:hover{text-decoration:underline}
+.mini .go.none{color:var(--text-3);opacity:.5;cursor:default}
+.mini .go.none:hover{text-decoration:none}
+
+/* ---------- repos ---------- */
+.repos{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.repo{
+  display:block;text-decoration:none;border:1px solid var(--line);border-radius:18px;padding:24px;
+  background:var(--surface);transition:transform .3s var(--ease),border-color .3s var(--ease);
+}
+.repo:hover{border-color:var(--brand);transform:translateY(-5px)}
+.repo .rn{font-family:"JetBrains Mono",monospace;font-size:13px;word-break:break-word}
+.repo p{font-size:13.5px;color:var(--text-2);margin-top:10px;line-height:1.5}
+.repo .rf{display:flex;gap:16px;margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-3)}
+.repo .rf .st{color:#FFAE5C}
+
+/* ---------- stack ---------- */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:32px}
+.sg h4{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);font-weight:500;margin:0 0 14px;padding-bottom:11px;border-bottom:1px solid var(--line)}
+.sg p{font-size:14.5px;color:var(--text-2);line-height:1.85}
+
+/* ---------- contact ---------- */
+.contact{position:relative;padding:120px 0 80px;overflow:hidden}
+.contact h2{font-size:clamp(38px,7.6vw,92px);letter-spacing:-.045em;margin:18px 0 24px}
+.contact h2 .accent{color:var(--brand)}
+.contact .lede{font-size:19px;margin-bottom:38px}
+.foot{margin-top:72px;padding-top:26px;border-top:1px solid var(--line-2);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--text-3)}
+
+a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:8px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .hero-grid{grid-template-columns:1fr;gap:54px}
+  .row,.row.flip{grid-template-columns:1fr;gap:44px}
+  .row.flip .col-copy,.row.flip .col-art{order:0}
+  .band{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .band > div{border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+  .band > div:nth-child(2n){border-right:0}
+  .band > div:nth-last-child(-n+2){border-bottom:0}
+  .nav-links{display:none}
+  .nav-contact{margin-left:auto}
+  .nav-div{display:none}
+  .shot img{--dh:440px}
+  .proto.pair .shot img{--dh:370px}
+  .proto.pair .shot:nth-child(2){margin-top:48px}
+}
+@media (max-width:620px){
+  .wrap{padding:0 18px}
+  .nav-in{padding:11px 18px}
+  .nav-contact{gap:14px}
+  .nav-contact a{font-size:12.5px}
+  .nav .hire{margin-left:14px;padding:8px 14px}
+  .contact-row{gap:0 16px}
+  .sec{padding:72px 0}
+  .row{padding:48px 0}
+  .shot img{--dh:min(420px,62vh)}
+  .proto.pair{gap:10px}
+  .proto.pair .shot img{--dh:min(290px,40vh)}
+  .proto.pair .shot:nth-child(2){margin-top:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .rise{opacity:1!important;transform:none!important}
+}
+</style>
+
+<div id="bar"></div>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="sig" href="#top">AV<i>.</i></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#more">Also shipped</a>
+      <a href="#open-source">Open source</a>
+      <a href="#stack">Stack</a>
+    </div>
+    <span class="nav-div"></span>
+    <div class="nav-contact">
+      <a href="https://linkedin.com/in/adityakvaghela" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/AdityaKVaghela" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Upwork</a>
+    </div>
+    <a class="hire" href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Hire me on Upwork</a>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero" id="top">
+  <div class="aurora"><i class="n1"></i><i class="n2"></i><i class="n3"></i></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="tagrow rise">
+          <span class="pill"><span class="beacon"></span> Available for senior iOS roles</span>
+          <span class="eyebrow">Swift &nbsp;/&nbsp; SwiftUI &nbsp;/&nbsp; UIKit &nbsp;/&nbsp; Objective-C &nbsp;/&nbsp; Flutter</span>
+        </div>
+        <h1 class="name rise d1">Aditya<span class="l2">Vaghela</span></h1>
+        <div class="contact-row rise d2">
+          <a class="mail" href="mailto:adityavk.work@gmail.com">adityavk.work@gmail.com</a>
+          <span class="sep">/</span>
+          <a href="https://linkedin.com/in/adityakvaghela" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+          <a href="https://github.com/AdityaKVaghela" target="_blank" rel="noopener">GitHub &nearr;</a>
+          <a href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Upwork &nearr;</a>
+          <a href="https://twitter.com/iadii13" target="_blank" rel="noopener">Twitter &nearr;</a>
+        </div>
+        <p class="lede rise d2">
+          Senior iOS engineer. <b>5+ years</b>, <b>20+ apps</b> and <b>50M+ downloads</b> &mdash;
+          weather radar with 30,000+ ratings, a reader SDK running inside other companies' apps,
+          and legacy Objective-C codebases moved to Swift without a single feature going dark. Native iOS first, plus cross-platform delivery in Flutter.
+          I leave apps <b>70% lighter on memory</b> and <b>half the size</b> I found them.
+        </p>
+        <div class="cta rise d3">
+          <a class="btn solid" href="#work">See the work</a>
+          <a class="btn upwork" href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Hire me on Upwork &nearr;</a>
+        </div>
+      </div>
+      <div class="col-art rise d4" style="--c:#2E86FF">
+        <div class="proto">
+          <div class="shot"><img src="assets/apps/skai.jpg" alt="SKAI hyper-local storm map with live hail markers and a storm detail card showing wind speed, hail probability and storm height" width="405" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="band" data-rev>
+      <div><div class="v" data-count="5" data-suffix="+">5+</div><div class="k">Years shipping iOS</div></div>
+      <div><div class="v" data-count="20" data-suffix="+">20+</div><div class="k">Apps delivered</div></div>
+      <div><div class="v" data-count="50" data-suffix="M+">50M+</div><div class="k">Downloads across shipped apps</div></div>
+      <div><div class="v" data-count="70" data-suffix="%">70%</div><div class="k">Memory usage reduced</div></div>
+      <div><div class="v" data-count="50" data-suffix="%">50%</div><div class="k">App size reduced</div></div>
+      <div><div class="v" data-count="1000" data-suffix="+">1000+</div><div class="k">SonarQube issues cleared</div></div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="mtrack">
+    <span>SKAI</span><span>Kitaboo</span><span>Musaid</span><span>Kikuubo Online</span><span>Hanskamp Spider</span><span>NOCN</span><span>ABSLI</span><span>Turkcell</span><span>Rinnai</span><span>Magic Mirror AI</span><span>BriefMe AI</span>
+    <span>SKAI</span><span>Kitaboo</span><span>Musaid</span><span>Kikuubo Online</span><span>Hanskamp Spider</span><span>NOCN</span><span>ABSLI</span><span>Turkcell</span><span>Rinnai</span><span>Magic Mirror AI</span><span>BriefMe AI</span>
+  </div>
+</div>
+
+<!-- ==================== WORK ==================== -->
+<section class="sec" id="work">
+  <div class="wrap">
+    <div class="sec-head" data-rev>
+      <h2>Selected work</h2>
+      <span class="tail">A selection from 20+ shipped apps</span>
+    </div>
+
+    <article class="row" style="--c:#2E86FF">
+      <div class="col-copy" data-rev>
+        <span class="badge">Weather &amp; safety &middot; United States</span>
+        <h3>SKAI</h3>
+        <div class="who">NOAA Weather Radar &middot; Tightrope Interactive &middot; 4.6&#9733; / 30,000+ ratings</div>
+        <p class="pitch">Live weather radar for the ten seconds before someone decides whether to leave the house. Storm, hurricane and lightning tracking on NOAA data, with the forecast repeated on the lock screen so the app often does not need opening at all.</p>
+        <ul class="bullets">
+          <li><b>Home screen and lock screen widgets</b> built with WidgetKit, showing live conditions and deep-linking into the matching in-app view.</li>
+          <li>Bookmarked locations shared between app and widgets through <b>App Groups and SwiftData</b> &mdash; saved in one, present in the other.</li>
+          <li>Past and future radar, hurricane tracker, lightning strikes and 24-hour precipitation, all on live NOAA data.</li>
+          <li>Memory footprint reduced by <b>70%</b> after leak hunting in Instruments.</li>
+        </ul>
+        <div class="chips"><span class="chip">SwiftUI</span><span class="chip">WidgetKit</span><span class="chip">SwiftData</span><span class="chip">App Groups</span><span class="chip">MapKit</span><span class="chip">Instruments</span><span class="chip">Deep linking</span></div>
+        <a class="store" href="https://apps.apple.com/us/app/skai-noaa-weather-radar/id6448301535" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/skai.jpg" fetchpriority="high" alt="SKAI hourly and ten-day forecast over a live thunderstorm backdrop showing 74 degrees and strong thunderstorms" width="405" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/skai-2.jpg" alt="iPhone lock screen carrying SKAI lock screen widgets and time-sensitive severe thunderstorm and high wind warnings" loading="lazy" width="405" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row flip" style="--c:#A768FF">
+      <div class="col-copy" data-rev>
+        <span class="badge">AI &middot; image generation &middot; Flutter</span>
+        <h3>Magic Mirror AI</h3>
+        <div class="who">Reymundo Perez Jr &middot; Flutter &middot; iOS + Android</div>
+        <p class="pitch">Upload a few photos of a child, pick an avatar type, and the app generates them as an astronaut, a footballer, a police officer. The work is in the upload flow, the credit economy and keeping generation responsive while it runs.</p>
+        <ul class="bullets">
+          <li>Multi-image <b>upload flow</b> with guidance and a four-image cap feeding each generation request.</li>
+          <li>Parameterised generation &mdash; name, age, gender and avatar type &mdash; against an AI image backend.</li>
+          <li><b>Credit balance and upgrade path</b> wired through the generate flow.</li>
+          <li>Results gallery with download, share and regenerate on any result.</li>
+        </ul>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">OpenAI API</span><span class="chip">In-app purchases</span><span class="chip">Image pipeline</span></div>
+        <a class="store" href="https://apps.apple.com/us/app/magic-mirror-ai/id6742031567" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/magicmirror.jpg" alt="Magic Mirror AI gallery of generated child avatars in astronaut, footballer and superhero styles" loading="lazy" width="406" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/magicmirror-2.jpg" alt="Magic Mirror AI generate screen with photo upload, child name, age, gender and avatar type" loading="lazy" width="406" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row" style="--c:#F5C518">
+      <div class="col-copy" data-rev>
+        <span class="badge">Telecom &middot; T&uuml;rkiye</span>
+        <h3>&#350;irketim</h3>
+        <div class="who">Turkcell &middot; corporate account management &middot; now &#304;&#351;Turkcell Online</div>
+        <p class="pitch">Corporate account management for Turkcell business customers &mdash; every line a company owns, its packages, its usage and its invoices, in one place.</p>
+        <ul class="bullets">
+          <li>Package and usage data per line, with dials for remaining allowance and top-ups for lines about to run out.</li>
+          <li><b>Approval queues</b> for contracts and requests awaiting sign-off.</li>
+          <li>Invoices viewable the moment they are issued, individually or in bulk across the account.</li>
+          <li>Turkish-language interface throughout, on both iPhone and iPad.</li>
+        </ul>
+        <div class="chips"><span class="chip">Swift</span><span class="chip">UIKit</span><span class="chip">MVVM</span><span class="chip">REST APIs</span><span class="chip">Localisation</span><span class="chip">iPad</span></div>
+        <a class="store" href="https://apps.apple.com/tr/app/i-%C5%9Fturkcell-online/id930808346" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/turkcell.jpg" alt="Sirketim corporate dashboard showing line usage dials and quick actions in Turkish" loading="lazy" width="495" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/turkcell-2.jpg" alt="Sirketim approvals queue listing pending contracts and requests awaiting sign-off" loading="lazy" width="495" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row flip" style="--c:#F2A93B">
+      <div class="col-copy" data-rev>
+        <span class="badge">EdTech &middot; app + binary SDK</span>
+        <h3>Kitaboo Reader</h3>
+        <div class="who">Hurix Systems &middot; current role since Jan 2025</div>
+        <p class="pitch">A reader for digital learning content &mdash; eBook, fixed-layout EPUB, reflowable EPUB, audiobook and videobook &mdash; shipped both as an app and as a binary SDK that client companies embed in their own products.</p>
+        <ul class="bullets">
+          <li>Pen tool with full <b>undo/redo</b>, annotation state modelled so drawing actions reverse and reapply cleanly.</li>
+          <li><b>Highlights, notes and contextual notes</b>, plus table of contents and last-page sync, working across online and offline reading.</li>
+          <li>Video and audio playback with synced transcripts and chapter navigation alongside the text.</li>
+          <li>Distributed as binary <b>XCFrameworks</b> with managed versioning; <b>1000+ SonarQube issues</b> cleared and the API lifecycle restructured to cut redundant traffic.</li>
+        </ul>
+        <div class="chips"><span class="chip">Swift</span><span class="chip">UIKit</span><span class="chip">XCFramework</span><span class="chip">Core Data</span><span class="chip">AVKit</span><span class="chip">Offline-first</span></div>
+        <a class="store" href="https://apps.apple.com/us/app/kitaboo-player/id774949228" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/kitaboo.jpg" alt="Kitaboo reader with the highlight and notes toolbar open over an ebook page" loading="lazy" width="495" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/kitaboo-2.jpg" alt="Kitaboo video player with a synced transcript and chapter list beneath it" loading="lazy" width="495" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row" style="--c:#14A69B">
+      <div class="col-copy" data-rev>
+        <span class="badge">AI &middot; meeting assistant &middot; Flutter</span>
+        <h3>BriefMe AI</h3>
+        <div class="who">Reymundo Perez Jr &middot; Flutter &middot; iOS + Android</div>
+        <p class="pitch">Record any meeting &mdash; a medical consultation, a lecture, a formal complaint &mdash; and get a structured summary back, written into a template that matches the kind of meeting it was.</p>
+        <ul class="bullets">
+          <li>Long-form <b>audio recording</b> with a live timer, continuing while the phone is locked.</li>
+          <li>Per-recording <b>processing pipeline</b>, with queued, processing and processed states surfaced in the list.</li>
+          <li><b>Template-based AI summaries</b> written back against each recording and grouped by date.</li>
+          <li>Accounts, secure storage of recordings, and delete or retry on any session.</li>
+        </ul>
+        <div class="chips"><span class="chip">Flutter</span><span class="chip">Dart</span><span class="chip">Audio recording</span><span class="chip">OpenAI API</span><span class="chip">Background audio</span><span class="chip">REST APIs</span></div>
+        <a class="store" href="https://apps.apple.com/us/app/briefme-ai/id6480402143" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/briefme.jpg" alt="BriefMe AI recording a session with a live timer and a stop recording control" loading="lazy" width="495" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/briefme-2.jpg" alt="BriefMe AI summary of a history lecture, written back against the recording" loading="lazy" width="495" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row flip" style="--c:#D6455C">
+      <div class="col-copy" data-rev>
+        <span class="badge">Insurance &middot; India</span>
+        <h3>Service Buddy</h3>
+        <div class="who">Aditya Birla Sun Life Insurance &middot; agent &amp; manager platform</div>
+        <p class="pitch">The daily working tool for life-insurance agents and managers &mdash; renewals, proposals and customer servicing on one dashboard opened first thing each morning.</p>
+        <ul class="bullets">
+          <li>Agent dashboard &mdash; first-year premium totals, active proposals, renewals due and the day's actions.</li>
+          <li>Customer book with <b>filtering, sorting and favourites</b> on top of policy lookup.</li>
+          <li>Servicing flows for renewals and policy changes, with multi-user login and saved credentials.</li>
+          <li>Runs on a <b>custom algorithm</b> designed for the insurer's enterprise workflow.</li>
+        </ul>
+        <div class="chips"><span class="chip">Swift</span><span class="chip">UIKit</span><span class="chip">MVVM</span><span class="chip">REST APIs</span><span class="chip">Enterprise</span></div>
+        <a class="store" href="https://apps.apple.com/in/app/service-buddy-by-absli/id1574730183" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/absli.jpg" alt="ABSLI Service Buddy agent dashboard showing premium totals, active proposals and renewals due" loading="lazy" width="495" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/absli-2.jpg" alt="ABSLI Service Buddy customer list with filtering, sorting and favourites" loading="lazy" width="495" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row" style="--c:#E4322B">
+      <div class="col-copy" data-rev>
+        <span class="badge">Connected hardware &middot; Bluetooth</span>
+        <h3>Rinnai Plumber</h3>
+        <div class="who">Rinnai Corporation &middot; water heater commissioning</div>
+        <p class="pitch">A commissioning tool for technicians standing at a continuous-flow water heater. It pairs with the unit over Bluetooth and exposes the parameters that normally sit behind a service menu.</p>
+        <ul class="bullets">
+          <li><b>Bluetooth</b> pairing with the heater's control board &mdash; no network connection required on site.</li>
+          <li>Quick setup, advanced setup and product information once connected, with live parameter read and write.</li>
+          <li><b>Diagnostics</b> listing error codes in the order they occurred, each with a plain description.</li>
+          <li>Built for plant rooms: large touch targets, legible in poor light, fully offline.</li>
+        </ul>
+        <div class="chips"><span class="chip">Swift</span><span class="chip">CoreBluetooth</span><span class="chip">UIKit</span><span class="chip">Diagnostics</span><span class="chip">Offline</span></div>
+        <a class="store" href="https://apps.apple.com/nz/app/rinnai-plumber/id6737113881" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/rinnai.jpg" alt="Rinnai Plumber connected to a water heater over Bluetooth, offering quick setup, advanced setup and product information" loading="lazy" width="406" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/rinnai-2.jpg" alt="Rinnai Plumber diagnostics screen listing heat exchanger and sensor error codes with descriptions" loading="lazy" width="406" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row flip" style="--c:#2FA574">
+      <div class="col-copy" data-rev>
+        <span class="badge">AgriTech &middot; Netherlands</span>
+        <h3>Hanskamp Spider</h3>
+        <div class="who">Hanskamp AgroTech B.V. &middot; dairy farm automation</div>
+        <p class="pitch">Dairy feed management run from an iPad in the shed, standing next to the animals. The app joins the Spider network over local Wi-Fi and talks to the feed system directly.</p>
+        <ul class="bullets">
+          <li><b>Network Extension</b> that joins authorised Wi-Fi networks and services within dairy range.</li>
+          <li>Feed intake monitoring, problem-animal flagging and per-animal concentrate rations.</li>
+          <li><b>Concentrate ration curves</b> plotted against lactation day and editable on the spot.</li>
+          <li>Dispenser calibration and gate operation, on iPad layouts sized for gloved hands and shed lighting.</li>
+        </ul>
+        <div class="chips"><span class="chip">Swift</span><span class="chip">Network Extension</span><span class="chip">UIKit</span><span class="chip">Local networking</span><span class="chip">iPadOS</span></div>
+        <a class="store" href="https://apps.apple.com/us/app/hanskamp-spider/id1479412335" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/hanskamp.jpg" alt="Hanskamp Spider connect screen pairing the tablet with the in-shed Spider network" loading="lazy" width="659" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/hanskamp-2.jpg" alt="Hanskamp Spider concentrate ration curve editor plotting feed against lactation day" loading="lazy" width="659" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="row" style="--c:#22B8CF">
+      <div class="col-copy" data-rev>
+        <span class="badge">Education &middot; United Kingdom</span>
+        <h3>NOCN Pocketskills</h3>
+        <div class="who">NOCN Ltd &middot; National Open College Network</div>
+        <p class="pitch">An assessment app for learners taking NOCN qualifications, built around the recognition of informal adult learning &mdash; subject material plus free and paid practice tests.</p>
+        <ul class="bullets">
+          <li><b>Offline and online modes</b> &mdash; tests are sat without a guaranteed connection and results sync on reconnect.</li>
+          <li><b>StoreKit</b> in-app purchases and auto-renewable subscriptions for the paid test tiers.</li>
+          <li>Unit-by-unit test flow across trades &mdash; bricklaying theory, health and safety, communication.</li>
+          <li>Reference material alongside the tests, including numeracy and mathematical formulas.</li>
+        </ul>
+        <div class="chips"><span class="chip">Swift</span><span class="chip">UIKit</span><span class="chip">StoreKit</span><span class="chip">Core Data</span><span class="chip">Offline sync</span></div>
+        <a class="store" href="https://apps.apple.com/gb/app/nocn-pocketskills/id1387429536" target="_blank" rel="noopener">App Store &rarr;</a>
+      </div>
+      <div class="col-art" data-rev>
+        <div class="proto pair">
+          <div class="shot"><img src="assets/apps/nocn.jpg" alt="NOCN Pocketskills mathematical formulas menu with topic tiles" loading="lazy" width="495" height="880" decoding="async"></div>
+          <div class="shot"><img src="assets/apps/nocn-2.jpg" alt="NOCN Pocketskills bricklaying unit list with a start test action" loading="lazy" width="495" height="880" decoding="async"></div>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ==================== ALSO SHIPPED ==================== -->
+<section class="sec" id="more">
+  <div class="wrap">
+    <div class="sec-head" data-rev>
+      <h2>Also shipped</h2>
+      <span class="tail">Client &amp; enterprise builds</span>
+    </div>
+    <div class="minis" data-rev>
+
+      <div class="mini">
+        <h4>Musaid</h4>
+        <span class="where">Saudi Arabia &middot; Arabic, RTL</span>
+        <p>A Saudi food-delivery and grocery marketplace built entirely right-to-left &mdash; mirrored navigation, a configurable item builder, and live order tracking from review through to delivery.</p>
+        <a class="go none">Client project</a>
+      </div>
+
+      <div class="mini">
+        <h4>Kikuubo Online</h4>
+        <span class="where">Uganda &middot; East African e-commerce</span>
+        <p>Kampala's Kikuubo market as an app &mdash; wholesale and retail shopping across East Africa, in production Objective-C. Goods sell by the piece and by the pack, so dual pricing in UGX runs through catalogue, cart and checkout.</p>
+        <a class="go none">Client project</a>
+      </div>
+
+      <div class="mini">
+        <h4>MyGenie AI</h4>
+        <span class="where">GPT-3.5 &middot; keyboard extension</span>
+        <p>A custom keyboard and live chatbot &mdash; translation, paraphrasing, email replies, grammar correction and continuous writing, plus inline auto-suggestions as you type.</p>
+        <a class="go none">Client project</a>
+      </div>
+
+      <div class="mini">
+        <h4>Swap Shop</h4>
+        <span class="where">United Kingdom &middot; circular fashion</span>
+        <p>A clothes-swapping marketplace &mdash; listings, matching and swap negotiation between members, built to keep clothes in circulation rather than resell them.</p>
+        <a class="go none">Client project</a>
+      </div>
+
+      <div class="mini">
+        <h4>SBS &mdash; Since Being Single</h4>
+        <span class="where">United Kingdom &middot; British Asian dating</span>
+        <p>The dating app behind Since Being Single, the British Asian dating community founded by Kamey Alvi &mdash; profile discovery, matching and real-time chat.</p>
+        <a class="go none">Client project</a>
+      </div>
+
+      <div class="mini">
+        <h4>RFID device module</h4>
+        <span class="where">Objective-C &rarr; Swift</span>
+        <p>RFID reader connectivity over <span class="mono">CoreBluetooth</span> &mdash; device discovery, connection and power-level get/set. Migrated from Objective-C to Swift incrementally, so the feature stayed shippable throughout.</p>
+        <a class="go none">Internal module</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== OPEN SOURCE ==================== -->
+<section class="sec" id="open-source">
+  <div class="wrap">
+    <div class="sec-head" data-rev>
+      <h2>Open source</h2>
+      <span class="tail">github.com/AdityaKVaghela</span>
+    </div>
+    <div class="repos" data-rev>
+      <a class="repo" href="https://github.com/AdityaKVaghela/LockScreenWidgets" target="_blank" rel="noopener">
+        <div class="rn">LockScreenWidgets</div><p>Dynamic iOS 16 lock screen widgets built with WidgetKit.</p>
+        <div class="rf"><span class="st">&#9733; 4</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/CustomTabbarSwiftUI" target="_blank" rel="noopener">
+        <div class="rn">CustomTabbarSwiftUI</div><p>A reusable custom tab bar for SwiftUI, drop-in for any app.</p>
+        <div class="rf"><span class="st">&#9733; 1</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/Live-Activities-Dynamic-island" target="_blank" rel="noopener">
+        <div class="rn">Live-Activities-Dynamic-island</div><p>Live Activities and Dynamic Island with ActivityKit &mdash; order a pizza to watch it work.</p>
+        <div class="rf"><span>ActivityKit</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/ARKIT-First-Demo" target="_blank" rel="noopener">
+        <div class="rn">ARKIT-First-Demo</div><p>Lenskart-style eyewear try-on with ARKit &mdash; wear a pair, tap to flip.</p>
+        <div class="rf"><span>ARKit</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/KeyBoardExtension" target="_blank" rel="noopener">
+        <div class="rn">KeyBoardExtension</div><p>A custom system keyboard in Swift &mdash; the groundwork behind MyGenie AI.</p>
+        <div class="rf"><span>Extensions</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/AttributedLinkSwiftUI" target="_blank" rel="noopener">
+        <div class="rn">AttributedLinkSwiftUI</div><p>Reusable attributed links in SwiftUI without dropping down to UIKit.</p>
+        <div class="rf"><span>SwiftUI</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/Stocks-App-SwiftUI" target="_blank" rel="noopener">
+        <div class="rn">Stocks-App-SwiftUI</div><p>A stocks tracker in SwiftUI &mdash; charts, watchlist, live quotes.</p>
+        <div class="rf"><span>SwiftUI</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/GeometryReader-SwiftUI" target="_blank" rel="noopener">
+        <div class="rn">GeometryReader-SwiftUI</div><p>Using GeometryReader to detect which view is on screen inside a scroll view.</p>
+        <div class="rf"><span>SwiftUI</span><span>Swift</span></div>
+      </a>
+      <a class="repo" href="https://github.com/AdityaKVaghela/Trekizer-App-SwiftUI" target="_blank" rel="noopener">
+        <div class="rn">Trekizer-App-SwiftUI</div><p>A trekking app concept built in SwiftUI.</p>
+        <div class="rf"><span>SwiftUI</span><span>Swift</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STACK ==================== -->
+<section class="sec" id="stack">
+  <div class="wrap">
+    <div class="sec-head" data-rev><h2>Stack</h2></div>
+    <div class="stack" data-rev>
+      <div class="sg"><h4>Languages</h4><p>Swift &middot; Objective-C &middot; Python &middot; Java</p></div>
+      <div class="sg"><h4>Apple frameworks</h4><p>UIKit &middot; SwiftUI &middot; Foundation &middot; Combine &middot; Core Data &middot; SwiftData &middot; StoreKit &middot; WidgetKit &middot; ActivityKit &middot; AVKit &middot; CoreBluetooth &middot; MapKit &middot; Core Location &middot; Core Graphics &middot; Network Extension</p></div>
+      <div class="sg"><h4>Cross-platform</h4><p>Flutter &middot; Dart &middot; React Native &middot; Shared iOS/Android delivery &middot; Platform channels &middot; Native module bridging</p></div>
+      <div class="sg"><h4>Concurrency &amp; networking</h4><p>async/await &middot; Swift Concurrency &middot; GCD &middot; URLSession &middot; Alamofire &middot; Moya &middot; AFNetworking &middot; REST &middot; Codable</p></div>
+      <div class="sg"><h4>Architecture</h4><p>MVVM &middot; MVC &middot; SOLID &middot; Dependency injection &middot; Offline-first &middot; Auto Layout &middot; Storyboard &amp; XIB &middot; Code review &middot; Agile / Scrum</p></div>
+      <div class="sg"><h4>Tooling &amp; delivery</h4><p>Xcode &middot; Instruments &middot; Git &middot; CocoaPods &middot; SPM &middot; XCTest &middot; XCFrameworks &middot; SDK development &middot; Jenkins &middot; SonarQube &middot; Firebase Crashlytics &middot; TestFlight &middot; App Store Connect &middot; Jira &middot; Figma</p></div>
+      <div class="sg"><h4>AI engineering</h4><p>OpenAI API integration &middot; AI chatbot development &middot; MCP and tool-calling integrations</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section class="contact" id="contact">
+  <div class="aurora"><i class="n1" style="top:auto;bottom:-320px;left:-160px"></i><i class="n2" style="top:auto;bottom:-260px;right:-200px"></i></div>
+  <div class="wrap">
+    <span class="eyebrow" data-rev>Contact</span>
+    <h2 data-rev>Let's put something<br>on the <span class="accent">App Store.</span></h2>
+    <p class="lede" data-rev>
+      Open to senior iOS roles and contract work &mdash; especially legacy migration, SDK
+      work, or making a slow app behave.
+    </p>
+    <div class="cta" data-rev style="margin-top:0">
+      <a class="btn solid" href="mailto:adityavk.work@gmail.com">adityavk.work@gmail.com</a>
+      <a class="btn upwork" href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Hire me on Upwork &nearr;</a>
+      <a class="btn" href="https://linkedin.com/in/adityakvaghela" target="_blank" rel="noopener">LinkedIn &nearr;</a>
+      <a class="btn" href="https://github.com/AdityaKVaghela" target="_blank" rel="noopener">GitHub &nearr;</a>
+      <a class="btn" href="https://twitter.com/iadii13" target="_blank" rel="noopener">Twitter &nearr;</a>
+    </div>
+    <div class="foot">
+      <span>Aditya Vaghela &middot; Senior iOS Engineer &middot; Swift, SwiftUI, UIKit, Objective-C</span>
+      <span class="mono">English &middot; Hindi &middot; Gujarati</span>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- scroll progress + timeline fill + nav spy ---- */
+  var bar = document.getElementById('bar');
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var targets = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); });
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+
+    var active = -1;
+    for (var i = 0; i < targets.length; i++){
+      var t = targets[i];
+      if (t && t.getBoundingClientRect().top <= window.innerHeight * 0.38) active = i;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('on', i === active); });
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  onScroll();
+
+  if (reduce) return;
+
+  /* ---- reveal on scroll (initial state set in JS, so no-JS stays visible) ---- */
+  var revs = Array.prototype.slice.call(document.querySelectorAll('[data-rev]'));
+  if ('IntersectionObserver' in window && revs.length){
+    var st = document.createElement('style');
+    st.textContent =
+      '[data-rev].pre{opacity:0;transform:translateY(18px)}' +
+      '[data-rev].pre.in{opacity:1;transform:none;' +
+      'transition:opacity .5s cubic-bezier(.22,.75,.2,1),transform .5s cubic-bezier(.22,.75,.2,1)}';
+    document.head.appendChild(st);
+    revs.forEach(function(el){ el.classList.add('pre'); });
+
+    /* Generous margin: things reveal well before they scroll into view, so a fast
+       scroll never lands on an empty screen. */
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, {rootMargin:'400px 0px 400px 0px', threshold:0});
+    revs.forEach(function(el){ io.observe(el); });
+
+    /* Safety net: nothing stays hidden, whatever happens with the observer. */
+    setTimeout(function(){ revs.forEach(function(el){ el.classList.add('in'); }); }, 4000);
+  }
+
+  /* ---- count-up stats ---- */
+  var nums = Array.prototype.slice.call(document.querySelectorAll('[data-count]'));
+  if ('IntersectionObserver' in window && nums.length){
+    var nio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        nio.unobserve(e.target);
+        var el = e.target;
+        var end = parseFloat(el.getAttribute('data-count'));
+        var suf = el.getAttribute('data-suffix') || '';
+        var t0 = null, dur = 1300;
+        function step(ts){
+          if (t0 === null) t0 = ts;
+          var k = Math.min(1, (ts - t0) / dur);
+          var eased = 1 - Math.pow(1 - k, 3);
+          el.textContent = Math.round(end * eased) + suf;
+          if (k < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }, {threshold:0.5});
+    nums.forEach(function(el){ nio.observe(el); });
+  }
+
+  /* ---- pointer tilt on the app shots ---- */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches){
+    Array.prototype.slice.call(document.querySelectorAll('.proto')).forEach(function(shell){
+      var devs = Array.prototype.slice.call(shell.querySelectorAll('.shot'));
+      if (!devs.length) return;
+      shell.addEventListener('pointermove', function(ev){
+        var r = shell.getBoundingClientRect();
+        var x = (ev.clientX - r.left) / r.width - 0.5;
+        var y = (ev.clientY - r.top) / r.height - 0.5;
+        shell.classList.add('tilting');
+        var t = 'rotateY(' + (x * 15).toFixed(2) + 'deg) rotateX(' + (-y * 15).toFixed(2) + 'deg) translateZ(24px)';
+        devs.forEach(function(d){ d.style.transform = t; });
+      });
+      shell.addEventListener('pointerleave', function(){
+        shell.classList.remove('tilting');
+        devs.forEach(function(d){ d.style.transform = ''; });
+      });
+    });
+  }
+})();
+</script>
