@@ -16,8 +16,8 @@
   --line-2:#EDEFF3;
   --line-strong:#CFD4DE;
   --text:#0D1117;
-  --text-2:#555E6D;
-  --text-3:#8A93A2;
+  --text-2:#4A5362;
+  --text-3:#69727F;
   --brand:#3B5BFF;
   --brand-2:#8B5CF6;
   --brand-ink:#FFFFFF;
@@ -50,8 +50,8 @@
     --line-2:#1A1D24;
     --line-strong:#39404E;
     --text:#F4F6F9;
-    --text-2:#98A1B0;
-    --text-3:#6B7383;
+    --text-2:#A7B0BE;
+    --text-3:#828B9B;
     --brand:#7D99FF;
     --brand-2:#B58BFF;
     --brand-ink:#070A14;
@@ -82,8 +82,8 @@
   --line-2:#1A1D24;
   --line-strong:#39404E;
   --text:#F4F6F9;
-  --text-2:#98A1B0;
-  --text-3:#6B7383;
+  --text-2:#A7B0BE;
+  --text-3:#828B9B;
   --brand:#7D99FF;
   --brand-2:#B58BFF;
   --brand-ink:#070A14;
@@ -130,7 +130,7 @@ p{margin:0}
 ul{margin:0;padding:0;list-style:none}
 h1,h2,h3,h4{font-family:"Outfit","Manrope",sans-serif;margin:0;text-wrap:balance;line-height:1.02;letter-spacing:-.03em;font-weight:800}
 .mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
-.eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-2)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px;position:relative;z-index:1}
 .skip{
   position:absolute;left:-9999px;top:0;z-index:200;padding:12px 18px;border-radius:0 0 10px 0;
@@ -160,7 +160,7 @@ h1,h2,h3,h4{font-family:"Outfit","Manrope",sans-serif;margin:0;text-wrap:balance
 
 .nav-links{display:flex;gap:26px;margin:0 auto}
 .nav-links a{
-  text-decoration:none;font-size:13.5px;color:var(--text-3);position:relative;padding:3px 0;
+  text-decoration:none;font-size:13.5px;color:var(--text-2);position:relative;padding:3px 0;
   transition:color .25s var(--ease);
 }
 .nav-links a::after{
@@ -172,7 +172,7 @@ h1,h2,h3,h4{font-family:"Outfit","Manrope",sans-serif;margin:0;text-wrap:balance
 
 .nav-contact{display:flex;align-items:center;gap:16px;flex:none}
 .nav-contact a{
-  text-decoration:none;font-size:13px;color:var(--text-3);white-space:nowrap;
+  text-decoration:none;font-size:13px;color:var(--text-2);white-space:nowrap;
   transition:color .25s var(--ease);
 }
 .nav-contact a:hover{color:var(--text)}
@@ -319,7 +319,7 @@ h1.name .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--stroke
 .band > div:nth-child(3n){border-right:0}
 .band > div:nth-last-child(-n+3){border-bottom:0}
 .band .v{font-family:"Outfit",sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
-.band .k{margin-top:10px;font-size:12.5px;color:var(--text-3);line-height:1.45}
+.band .k{margin-top:10px;font-size:13px;color:var(--text-2);line-height:1.45}
 
 /* ---------- marquee ---------- */
 .marquee{margin:0;padding:22px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);overflow:hidden}
@@ -337,7 +337,7 @@ h1.name .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--stroke
 .sec{padding:110px 0;position:relative}
 .sec-head{display:flex;align-items:flex-end;gap:22px;margin-bottom:60px;flex-wrap:wrap}
 .sec-head h2{font-size:clamp(32px,5.4vw,62px)}
-.sec-head .tail{margin-left:auto;color:var(--text-3);font-size:13px}
+.sec-head .tail{margin-left:auto;color:var(--text-2);font-size:13px}
 
 /* ---------- project rows ---------- */
 .row{
@@ -359,7 +359,7 @@ h1.name .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--stroke
   background:color-mix(in srgb,var(--c) 11%,transparent);
 }
 .row h3{font-size:clamp(30px,4.4vw,54px);margin-bottom:14px}
-.row .who{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--text-3);margin-bottom:22px}
+.row .who{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--text-2);margin-bottom:22px}
 .row .pitch{color:var(--text-2);font-size:17px;max-width:56ch;margin-bottom:28px}
 .bullets{display:flex;flex-direction:column;gap:13px;max-width:58ch}
 .bullets li{position:relative;padding-left:24px;color:var(--text-2);font-size:15.5px;line-height:1.55}
@@ -367,7 +367,7 @@ h1.name .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--stroke
 .bullets b{color:var(--text);font-weight:700}
 
 .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:26px}
-.chip{font-family:"JetBrains Mono",monospace;font-size:11px;padding:6px 11px;border:1px solid var(--line);border-radius:7px;color:var(--text-3);transition:border-color .25s var(--ease),color .25s var(--ease)}
+.chip{font-family:"JetBrains Mono",monospace;font-size:11.5px;padding:6px 11px;border:1px solid var(--line);border-radius:7px;color:var(--text-2);transition:border-color .25s var(--ease),color .25s var(--ease)}
 .row:hover .chip{border-color:color-mix(in srgb,var(--c) 34%,var(--line))}
 
 .store{
@@ -404,7 +404,7 @@ h1.name .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--stroke
 .mini:hover::before{opacity:1}
 .mini > *{position:relative}
 .mini h4{font-size:20px;font-weight:700;letter-spacing:-.025em}
-.mini .where{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-3)}
+.mini .where{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--text-2)}
 .mini p{font-size:14px;color:var(--text-2);line-height:1.55}
 .mini .go{margin-top:auto;padding-top:16px;font-family:"JetBrains Mono",monospace;font-size:11.5px;text-decoration:none;color:var(--brand)}
 .mini .go:hover{text-decoration:underline}
@@ -420,7 +420,7 @@ h1.name .l2{display:block;color:transparent;-webkit-text-stroke:2px var(--stroke
 .repo:hover{border-color:var(--brand);transform:translateY(-5px)}
 .repo .rn{font-family:"JetBrains Mono",monospace;font-size:13px;word-break:break-word}
 .repo p{font-size:13.5px;color:var(--text-2);margin-top:10px;line-height:1.5}
-.repo .rf{display:flex;gap:16px;margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--text-3)}
+.repo .rf{display:flex;gap:16px;margin-top:18px;font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--text-2)}
 .repo .rf .st{color:var(--star)}
 
 /* ---------- stack ---------- */
@@ -529,10 +529,6 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
         <h1 class="name rise d1">Aditya<span class="l2">Vaghela</span></h1>
         <div class="contact-row rise d2">
           <a class="mail" href="mailto:adityavk.work@gmail.com">adityavk.work@gmail.com</a>
-          <span class="sep">/</span>
-          <a href="https://linkedin.com/in/adityakvaghela" target="_blank" rel="noopener">LinkedIn &nearr;</a>
-          <a href="https://github.com/AdityaKVaghela" target="_blank" rel="noopener">GitHub &nearr;</a>
-          <a href="https://twitter.com/iadii13" target="_blank" rel="noopener">Twitter &nearr;</a>
         </div>
         <p class="lede rise d2">
           Mobile app developer, iOS expert. <b>5 years shipping apps</b>, <b>20+ apps</b> and <b>50M+ downloads</b> &mdash;
@@ -542,7 +538,6 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
         </p>
         <div class="cta rise d3">
           <a class="btn solid" href="#work">See the work</a>
-          <a class="btn upwork" href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Hire me on Upwork &nearr;</a>
         </div>
       </div>
       <div class="col-art rise d4" style="--c:#2E86FF">
@@ -571,13 +566,8 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
 </div>
 
 <!-- ==================== WORK ==================== -->
-<section class="sec" id="work">
+<section class="sec" id="work" style="padding-top:34px">
   <div class="wrap">
-    <div class="sec-head" data-rev>
-      <h2>Selected work</h2>
-      <span class="tail">A selection from 20+ shipped apps</span>
-    </div>
-
     <article class="row" style="--c:#2E86FF">
       <div class="col-copy" data-rev>
         <span class="badge">Weather &amp; safety &middot; United States</span>
@@ -920,7 +910,7 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
     </p>
     <div class="cta" data-rev style="margin-top:0">
       <a class="btn solid" href="mailto:adityavk.work@gmail.com">adityavk.work@gmail.com</a>
-      <a class="btn upwork" href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Hire me on Upwork &nearr;</a>
+      <a class="btn upwork" href="https://www.upwork.com/freelancers/~013424d2845294ff40" target="_blank" rel="noopener">Upwork &nearr;</a>
       <a class="btn" href="https://linkedin.com/in/adityakvaghela" target="_blank" rel="noopener">LinkedIn &nearr;</a>
       <a class="btn" href="https://github.com/AdityaKVaghela" target="_blank" rel="noopener">GitHub &nearr;</a>
       <a class="btn" href="https://twitter.com/iadii13" target="_blank" rel="noopener">Twitter &nearr;</a>
