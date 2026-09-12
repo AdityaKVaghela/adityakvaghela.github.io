@@ -1,7 +1,7 @@
 <title>Aditya Vaghela</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* ==========================================================
    Single committed world: deep space. Every colour explicit.
@@ -22,6 +22,15 @@
   color-scheme:dark;
 }
 *{box-sizing:border-box}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.024) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.024) 1px,transparent 1px);
+  background-size:68px 68px;
+  -webkit-mask-image:radial-gradient(ellipse 90% 55% at 50% 0%,#000 28%,transparent 76%);
+  mask-image:radial-gradient(ellipse 90% 55% at 50% 0%,#000 28%,transparent 76%);
+}
 html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--void);color:var(--text);
@@ -32,7 +41,7 @@ a{color:inherit}
 img{display:block;max-width:100%}
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
-h1,h2,h3,h4{font-family:"Syne","Manrope",sans-serif;margin:0;text-wrap:balance;line-height:1.02;letter-spacing:-.03em;font-weight:800}
+h1,h2,h3,h4{font-family:"Outfit","Manrope",sans-serif;margin:0;text-wrap:balance;line-height:1.02;letter-spacing:-.03em;font-weight:800}
 .mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
 .eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3)}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 30px;position:relative;z-index:1}
@@ -54,7 +63,7 @@ h1,h2,h3,h4{font-family:"Syne","Manrope",sans-serif;margin:0;text-wrap:balance;l
   max-width:var(--maxw);margin:0 auto;padding:13px 30px;
   display:flex;align-items:center;gap:0;
 }
-.nav .sig{font-family:"Syne",sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;text-decoration:none;flex:none}
+.nav .sig{font-family:"Outfit",sans-serif;font-weight:800;font-size:16px;letter-spacing:-.02em;text-decoration:none;flex:none}
 .nav .sig i{font-style:normal;color:var(--brand)}
 
 /* section links sit in the middle, away from both edges */
@@ -104,28 +113,28 @@ h1,h2,h3,h4{font-family:"Syne","Manrope",sans-serif;margin:0;text-wrap:balance;l
 
 /* ---------- scroll cue ---------- */
 .cue{
-  position:fixed;left:50%;bottom:24px;z-index:70;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
+  position:fixed;left:50%;bottom:26px;z-index:75;
+  display:flex;flex-direction:column;align-items:center;gap:9px;
   text-decoration:none;transform:translateX(-50%);
-  transition:opacity .45s var(--ease),transform .45s var(--ease);
+  transition:opacity .4s var(--ease),transform .4s var(--ease);
 }
+.cue .ring{
+  width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+  border:1.5px solid #394354;background:rgba(12,14,19,.7);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:border-color .25s var(--ease),background .25s var(--ease);
+}
+.cue svg{width:17px;height:17px;color:var(--brand);animation:bob 1.7s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(-3px)}50%{transform:translateY(3px)}}
 .cue .txt{
-  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.26em;
-  text-transform:uppercase;color:var(--text-3);transition:color .3s var(--ease);
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--text-2);
+  transition:color .25s var(--ease);
 }
-.cue .rail{
-  position:relative;width:1px;height:46px;overflow:hidden;
-  background:linear-gradient(180deg,var(--line) 0%,transparent 100%);
-}
-.cue .rail::after{
-  content:"";position:absolute;left:0;top:-16px;width:1px;height:16px;
-  background:linear-gradient(180deg,transparent,var(--brand));
-  animation:cuefall 1.9s cubic-bezier(.5,0,.5,1) infinite;
-}
-@keyframes cuefall{0%{top:-16px;opacity:0}18%{opacity:1}80%{opacity:1}100%{top:46px;opacity:0}}
+.cue:hover .ring{border-color:var(--brand);background:rgba(109,139,255,.12)}
 .cue:hover .txt{color:var(--text)}
-.cue.gone{opacity:0;transform:translateX(-50%) translateY(14px);pointer-events:none}
-@media (max-width:620px){.cue{bottom:16px}.cue .rail{height:34px}}
+.cue.gone{opacity:0;transform:translateX(-50%) translateY(16px);pointer-events:none}
+@media (max-width:620px){.cue{bottom:16px}.cue .ring{width:38px;height:38px}}
 
 /* ---------- aurora ---------- */
 .aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
@@ -180,7 +189,7 @@ h1,h2,h3,h4{font-family:"Syne","Manrope",sans-serif;margin:0;text-wrap:balance;l
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(59,219,138,.55)}70%{box-shadow:0 0 0 8px rgba(59,219,138,0)}}
 
 h1.name{font-size:clamp(48px,9.4vw,124px);letter-spacing:-.05em;line-height:.96;margin-bottom:30px}
-h1.name .l2{display:block;color:transparent;-webkit-text-stroke:1.6px #8492AD}
+h1.name .l2{display:block;color:transparent;-webkit-text-stroke:2px #94A2BC}
 .lede{font-size:clamp(16.5px,1.6vw,20px);color:var(--text-2);max-width:54ch}
 .lede b{color:var(--text);font-weight:700}
 .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
@@ -213,14 +222,14 @@ h1.name .l2{display:block;color:transparent;-webkit-text-stroke:1.6px #8492AD}
 .band > div{padding:26px 28px;border-right:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
 .band > div:nth-child(3n){border-right:0}
 .band > div:nth-last-child(-n+3){border-bottom:0}
-.band .v{font-family:"Syne",sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.band .v{font-family:"Outfit",sans-serif;font-weight:800;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
 .band .k{margin-top:10px;font-size:12.5px;color:var(--text-3);line-height:1.45}
 
 /* ---------- marquee ---------- */
 .marquee{margin:0;padding:22px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);overflow:hidden}
 .mtrack{display:flex;gap:40px;width:max-content;animation:slide 46s linear infinite}
 .mtrack span{
-  font-family:"Syne",sans-serif;font-weight:700;font-size:23px;letter-spacing:-.02em;
+  font-family:"Outfit",sans-serif;font-weight:700;font-size:23px;letter-spacing:-.02em;
   color:var(--text-3);white-space:nowrap;display:flex;align-items:center;gap:40px;
   transition:color .3s var(--ease);
 }
@@ -368,8 +377,13 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
 <div id="bar"></div>
 
 <a class="cue" id="cue" href="#work" aria-label="Scroll to the work">
+  <span class="ring">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 5v14M5 12l7 7 7-7"></path>
+    </svg>
+  </span>
   <span class="txt">Scroll</span>
-  <span class="rail" aria-hidden="true"></span>
 </a>
 
 <nav class="nav">
@@ -397,7 +411,7 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
     <div class="hero-grid">
       <div>
         <div class="tagrow rise">
-          <span class="pill"><span class="beacon"></span> Available for senior iOS roles</span>
+          <span class="pill"><span class="beacon"></span> Open for mobile app developer roles</span>
           <span class="eyebrow">Swift &nbsp;/&nbsp; SwiftUI &nbsp;/&nbsp; UIKit &nbsp;/&nbsp; Objective-C &nbsp;/&nbsp; Flutter</span>
         </div>
         <h1 class="name rise d1">Aditya<span class="l2">Vaghela</span></h1>
@@ -409,7 +423,7 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
           <a href="https://twitter.com/iadii13" target="_blank" rel="noopener">Twitter &nearr;</a>
         </div>
         <p class="lede rise d2">
-          Senior iOS engineer. <b>5+ years</b>, <b>20+ apps</b> and <b>50M+ downloads</b> &mdash;
+          Mobile app developer. <b>5 years shipping apps</b>, <b>20+ apps</b> and <b>50M+ downloads</b> &mdash;
           weather radar with 30,000+ ratings, a reader SDK running inside other companies' apps,
           and legacy Objective-C codebases moved to Swift without a single feature going dark. Native iOS first, plus cross-platform delivery in Flutter.
           I leave apps <b>70% lighter on memory</b> and <b>half the size</b> I found them.
@@ -427,7 +441,7 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
     </div>
 
     <div class="band" data-rev>
-      <div><div class="v" data-count="5" data-suffix="+">5+</div><div class="k">Years shipping iOS</div></div>
+      <div><div class="v" data-count="5" data-suffix="+">5+</div><div class="k">Years shipping mobile apps</div></div>
       <div><div class="v" data-count="20" data-suffix="+">20+</div><div class="k">Apps delivered</div></div>
       <div><div class="v" data-count="50" data-suffix="M+">50M+</div><div class="k">Downloads across shipped apps</div></div>
       <div><div class="v" data-count="70" data-suffix="%">70%</div><div class="k">Memory usage reduced</div></div>
@@ -775,7 +789,8 @@ a:focus-visible,.repo:focus-visible{outline:2px solid var(--brand);outline-offse
       <div class="sg"><h4>Cross-platform</h4><p>Flutter &middot; Dart &middot; React Native &middot; Shared iOS/Android delivery &middot; Platform channels &middot; Native module bridging</p></div>
       <div class="sg"><h4>Concurrency &amp; networking</h4><p>async/await &middot; Swift Concurrency &middot; GCD &middot; URLSession &middot; Alamofire &middot; Moya &middot; AFNetworking &middot; REST &middot; Codable</p></div>
       <div class="sg"><h4>Architecture</h4><p>MVVM &middot; MVC &middot; SOLID &middot; Dependency injection &middot; Offline-first &middot; Auto Layout &middot; Storyboard &amp; XIB &middot; Code review &middot; Agile / Scrum</p></div>
-      <div class="sg"><h4>Tooling &amp; delivery</h4><p>Xcode &middot; Instruments &middot; Git &middot; CocoaPods &middot; SPM &middot; XCTest &middot; XCFrameworks &middot; SDK development &middot; Jenkins &middot; SonarQube &middot; Firebase Crashlytics &middot; TestFlight &middot; App Store Connect &middot; Jira &middot; Figma</p></div>
+      <div class="sg"><h4>Store &amp; release</h4><p>App Store Connect &middot; TestFlight &middot; App Store review &amp; compliance &middot; Google Play Console &middot; Play Store releases &middot; Transporter &middot; Provisioning &amp; signing &middot; Phased rollouts</p></div>
+      <div class="sg"><h4>Tooling &amp; delivery</h4><p>Xcode &middot; Android Studio &middot; Instruments &middot; Git &middot; CocoaPods &middot; SPM &middot; XCTest &middot; XCFrameworks &middot; SDK development &middot; Jenkins &middot; SonarQube &middot; Firebase Crashlytics &middot; Jira &middot; Figma</p></div>
       <div class="sg"><h4>AI engineering</h4><p>OpenAI API integration &middot; AI chatbot development &middot; MCP and tool-calling integrations</p></div>
     </div>
   </div>
